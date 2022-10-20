@@ -20,9 +20,8 @@ export default function Home() {
   // 返回一个Provider或者signer对象 代表PRC节点
   const getProviderOrSigner = async (needSigner = false) => {
     // 连接metamask
-    //todo  因为web3ModalRef是一个ref对象 所以 我们要访问current值来访问底层对象
     const provider = await web3ModalRef.current.connect();
-    const web3Provider = new providers.Web3Provider(provider);
+    const web3Provider = new providers.Web3Provider(provider); //todo
 
     // 如果用户没有连接到goerli测试网，就抛出一个错误
     const { chainId } = await web3Provider.getNetwork();
@@ -120,7 +119,6 @@ export default function Home() {
     if (walletConnected) {
       if (joinedWhitelist) {
         return (
-          // todo styles.description?
           <div className={styles.description}>
             Thanks for joining the Whitelist!
           </div>
